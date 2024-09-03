@@ -25,8 +25,9 @@ object Cookies extends BasePage {
 
   def goTo(): Unit = get(url)
 
-  def pageTitle(): String = Driver.instance.getTitle
+  def pageTitle(): String = webDriver.getTitle
 
-  def cookiesInfoText(): String = Driver.instance.findElement(By.id("cookies-info")).getText
+  def cookiesInfoText(): String =
+    webDriver.findElement(By.id("cookies-info")).getText  
 
 }

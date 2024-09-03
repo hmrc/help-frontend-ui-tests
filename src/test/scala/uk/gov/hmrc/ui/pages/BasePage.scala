@@ -16,6 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.WebDriver
 import uk.gov.hmrc.selenium.component.PageObject
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BasePage extends PageObject {}
+trait BasePage extends PageObject {
+  
+  val webDriver: WebDriver = Driver.instance
+}

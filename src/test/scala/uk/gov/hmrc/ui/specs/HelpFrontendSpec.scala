@@ -23,7 +23,7 @@ import uk.gov.hmrc.ui.pages.Cookies
 class HelpFrontendSpec extends BaseSpec {
 
   Feature("Help") {
-    
+
     Scenario("Navigate to the cookies page") {
       Given("I go to the English version of the cookies page")
       Cookies.goTo()
