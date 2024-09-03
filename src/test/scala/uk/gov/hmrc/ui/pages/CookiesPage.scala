@@ -18,16 +18,12 @@ package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.webdriver.Driver
 
-object Cookies extends BasePage {
-  private val url: String = TestEnvironment.url("help-frontend") + "/cookie-details"
+object CookiesPage extends BasePage {
 
-  def goTo(): Unit = get(url)
-
-  def pageTitle(): String = webDriver.getTitle
+  override protected val url: String = TestEnvironment.url("help-frontend") + "/cookie-details"
 
   def cookiesInfoText(): String =
-    webDriver.findElement(By.id("cookies-info")).getText  
+    webDriver.findElement(By.id("cookies-info")).getText
 
 }

@@ -18,7 +18,9 @@ package uk.gov.hmrc.ui.specs
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
-import uk.gov.hmrc.ui.pages.Cookies
+import uk.gov.hmrc.ui.pages.{CookiesPage, TermsAndConditionsPage}
+
+import java.net.URI
 
 class HelpFrontendSpec extends BaseSpec {
 
@@ -26,14 +28,39 @@ class HelpFrontendSpec extends BaseSpec {
 
     Scenario("Navigate to the cookies page") {
       Given("I go to the English version of the cookies page")
-      Cookies.goTo()
+      CookiesPage.goTo()
 
       Then("I am shown the cookies page")
-      Cookies.pageTitle() shouldBe "Cookies – GOV.UK"
+      CookiesPage.pageTitle() shouldBe "Cookies – GOV.UK"
 
       And("I am shown cookie related content")
-      Cookies.cookiesInfoText shouldBe "Small files (known as ‘cookies’) are put onto your computer to collect information about how you browse the site."
+      CookiesPage.cookiesInfoText shouldBe "Small files (known as ‘cookies’) are put onto your computer to collect information about how you browse the site."
     }
+
+    Scenario("Navigate to the terms and conditions page") {
+      Given("I go to the terms and conditions page")
+      TermsAndConditionsPage.goTo()
+
+      Then("I am shown the terms and conditions page")
+      TermsAndConditionsPage.pageTitle() should be("Terms and conditions – GOV.UK")
+
+      And("I am shown terms and conditions related content")
+      TermsAndConditionsPage.disclaimerText() shouldBe "Disclaimer"
+
+      And("I am shown links to related content")
+      TermsAndConditionsPage.links().map(url => new URI(url)).map(_.getPath) shouldBe List(
+        "/help/privacy",
+        "/help/terms-and-conditions",
+        "/help/terms-and-conditions/online-services",
+        "/security/index.htm",
+        "/copyright/index.htm",
+        "/terms/agents.htm",
+        "/help/privacy",
+        "/contact/report-technical-problem"
+      )
+    }
+
+    // TODO: Add page and scenario for OnlineServicesTermsPage
   }
 
 }

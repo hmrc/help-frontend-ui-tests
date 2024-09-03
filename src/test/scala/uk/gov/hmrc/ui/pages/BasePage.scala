@@ -16,11 +16,28 @@
 
 package uk.gov.hmrc.ui.pages
 
-import org.openqa.selenium.WebDriver
+import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
 
+import scala.jdk.CollectionConverters.CollectionHasAsScala
+
 trait BasePage extends PageObject {
-  
+
+  protected val url: String
+
   val webDriver: WebDriver = Driver.instance
+
+  def goTo(): Unit = get(url)
+
+  def pageTitle(): String = webDriver.getTitle
+
+  def links(): Seq[String] = {
+    val linkElements = webDriver
+      .findElement(By.className("govuk-main-wrapper"))
+      .findElements(By.className("govuk-link"))
+      .asScala
+    linkElements.toSeq.map(_.getAttribute("href"))
+  }
+
 }
