@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.specs
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
-import uk.gov.hmrc.ui.pages.{CookiesPage, TermsAndConditionsPage}
+import uk.gov.hmrc.ui.pages.{CookiesPage, EnglishCookiesPage, TermsAndConditionsPage}
 
 import java.net.URI
 
@@ -28,13 +28,13 @@ class HelpFrontendSpec extends BaseSpec {
 
     Scenario("Navigate to the cookies page") {
       Given("I go to the English version of the cookies page")
-      CookiesPage.goTo()
+      EnglishCookiesPage.goTo()
 
       Then("I am shown the cookies page")
-      CookiesPage.pageTitle() shouldBe "Cookies – GOV.UK"
+      EnglishCookiesPage.pageTitle() shouldBe "Cookies – GOV.UK"
 
       And("I am shown cookie related content")
-      CookiesPage.cookiesInfoText shouldBe "Small files (known as ‘cookies’) are put onto your computer to collect information about how you browse the site."
+      EnglishCookiesPage.cookiesInfoText shouldBe "Small files (known as ‘cookies’) are put onto your computer to collect information about how you browse the site."
     }
 
     Scenario("Navigate to the terms and conditions page") {

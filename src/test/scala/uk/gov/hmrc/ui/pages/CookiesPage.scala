@@ -19,11 +19,27 @@ package uk.gov.hmrc.ui.pages
 import org.openqa.selenium.By
 import uk.gov.hmrc.configuration.TestEnvironment
 
-object CookiesPage extends BasePage {
+sealed trait CookiesPage extends BasePage {
 
   override protected val url: String = TestEnvironment.url("help-frontend") + "/cookie-details"
 
-  def cookiesInfoText(): String =
-    webDriver.findElement(By.id("cookies-info")).getText
+  def cookiesInfoText(): String = webDriver.findElement(By.id("cookies-info")).getText
 
+  def otherLanguage: String
+
+  def switchLanguage(): Unit =
+    webDriver.findElement(By.partialLinkText(otherLanguage)).click()
+
+  def hasLanguageSwitchingLink(): Boolean =
+    !webDriver.findElements(By.partialLinkText(otherLanguage)).isEmpty
+}
+
+object EnglishCookiesPage extends CookiesPage {
+  val otherLanguage: String  = "Cymraeg"
+  val cookiesHeading: String = "Cookies"
+}
+
+object WelshCookiesPage extends CookiesPage {
+  val otherLanguage: String  = "English"
+  val cookiesHeading: String = "Cwcis"
 }

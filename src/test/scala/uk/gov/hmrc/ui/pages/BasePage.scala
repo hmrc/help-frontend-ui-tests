@@ -26,7 +26,7 @@ trait BasePage extends PageObject {
 
   protected val url: String
 
-  val webDriver: WebDriver = Driver.instance
+  def webDriver: WebDriver = Driver.instance
 
   def goTo(): Unit = get(url)
 
