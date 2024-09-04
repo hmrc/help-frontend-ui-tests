@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.specs
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
-import uk.gov.hmrc.ui.pages.{CookiesPage, EnglishCookiesPage, TermsAndConditionsPage}
+import uk.gov.hmrc.ui.pages.{CookiesPage, EnglishCookiesPage, OnlineServicesTermsPage, TermsAndConditionsPage}
 
 import java.net.URI
 
@@ -60,7 +60,37 @@ class HelpFrontendSpec extends BaseSpec {
       )
     }
 
-    // TODO: Add page and scenario for OnlineServicesTermsPage
+    Scenario("Navigate to the online services terms and conditions page") {
+      Given("I go to the online services terms and conditions page")
+      OnlineServicesTermsPage.goTo()
+
+      Then("I am shown the online services terms and conditions page")
+      OnlineServicesTermsPage.pageTitle() shouldBe "HMRC Online Services Terms & Conditions – GOV.UK"
+
+      And("I am shown online services terms and conditions related content")
+      OnlineServicesTermsPage.subHeadings().toList shouldBe List(
+        "All individuals, organisations and agents",
+        "Additional points for individuals",
+        "Additional points for organisations",
+        "Additional points for agents, accountant and representatives",
+        "All Shared Workspace users"
+      )
+
+      And("I am shown links to related content")
+      OnlineServicesTermsPage.links().map(url => new URI(url)).map(_.getPath) shouldBe List(
+        "/online/index.htm",
+        "/about/privacy.htm",
+        "/information/helpdesk",
+        "/security/index.htm",
+        "/copyright/",
+        "/channelsPortalWebApp/channelsPortalWebApp.portal",
+        "/information/helpdesk",
+        "/manuals/swmanual/SW03370.htm",
+        "/terms/",
+        "/contact/report-technical-problem"
+      )
+    }
+
   }
 
 }

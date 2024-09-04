@@ -19,7 +19,6 @@ package uk.gov.hmrc.ui.pages
 import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
-
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 
 trait BasePage extends PageObject {
