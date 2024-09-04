@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.pages
 
-import uk.gov.hmrc.ui.conf.TestConfiguration
 import org.openqa.selenium.By
 import uk.gov.hmrc.configuration.TestEnvironment
 import scala.jdk.CollectionConverters.CollectionHasAsScala
@@ -27,7 +26,7 @@ object OnlineServicesTermsPage extends BasePage {
 
   def withLang(lang: String): BasePage = new BasePage {
     override val url: String =
-      TestConfiguration.url("help-frontend") + s"/terms-and-conditions/online-services?lang=$lang"
+      TestEnvironment.url("help-frontend") + s"/terms-and-conditions/online-services?lang=$lang"
   }
 
   def subHeadings(): Seq[String] = {
