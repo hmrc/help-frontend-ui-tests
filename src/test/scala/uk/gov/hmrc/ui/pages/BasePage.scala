@@ -29,7 +29,7 @@ trait BasePage extends PageObject {
 
   def goTo(): Unit = get(url)
 
-  def pageTitle(): String = webDriver.getTitle
+  def pageTitle(): String = getTitle
 
   def links(): Seq[String] = {
     val linkElements = webDriver

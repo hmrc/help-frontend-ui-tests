@@ -23,12 +23,11 @@ sealed trait CookiesPage extends BasePage {
 
   override protected val url: String = TestEnvironment.url("help-frontend") + "/cookie-details"
 
-  def cookiesInfoText(): String = webDriver.findElement(By.id("cookies-info")).getText
+  def cookiesInfoText(): String = getText(By.id("cookies-info"))
 
   def otherLanguage: String
 
-  def switchLanguage(): Unit =
-    webDriver.findElement(By.partialLinkText(otherLanguage)).click()
+  def switchLanguage(): Unit = click(By.partialLinkText(otherLanguage))
 
   def hasLanguageSwitchingLink(): Boolean =
     !webDriver.findElements(By.partialLinkText(otherLanguage)).isEmpty

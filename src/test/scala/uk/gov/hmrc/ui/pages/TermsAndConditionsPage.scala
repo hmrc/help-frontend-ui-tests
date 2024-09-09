@@ -23,6 +23,6 @@ object TermsAndConditionsPage extends BasePage {
 
   override protected val url: String = TestEnvironment.url("help-frontend") + "/terms-and-conditions"
 
-  def disclaimerText(): String = webDriver.findElement(By.id("disclaimer")).getText
+  def disclaimerText(): String = getText(By.id("disclaimer"))
 
 }

@@ -38,10 +38,8 @@ object OnlineServicesTermsPage extends BasePage {
     .findElement(By.tagName("html"))
     .getAttribute("lang")
 
-  def switchLanguageToEnglish(): Unit =
-    webDriver.findElement(By.partialLinkText("English")).click()
+  def switchLanguageToEnglish(): Unit = click(By.partialLinkText("English"))
 
-  def switchLanguageToWelsh(): Unit =
-    webDriver.findElement(By.partialLinkText("Cymraeg")).click()
+  def switchLanguageToWelsh(): Unit = click(By.partialLinkText("Cymraeg"))
 
 }
