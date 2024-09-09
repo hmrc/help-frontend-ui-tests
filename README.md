@@ -1,5 +1,3 @@
-**This is the template README. Please update this with project specific content.**
-
 # help-frontend-ui-tests
 
 HELP_FRONTEND UI journey tests.
