@@ -1,18 +1,12 @@
 # help-frontend-ui-tests
 
-HELP_FRONTEND UI journey tests.
+[help-frontend](https://github.com/hmrc/help-frontend) UI journey tests.
 
 ## Pre-requisites
 
 ### Services
 
-Start Mongo Docker container as follows:
-
-```bash
-docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:5.0
-```
-
-Start `HELP_FRONTEND` services as follows:
+Start `help-frontend` services as follows:
 
 ```bash
 sm2 --start HELP_FRONTEND
@@ -46,7 +40,7 @@ Run tests as follows:
 * Argument `<environment>` must be `local`, `dev`, `qa` or `staging`.
 
 ```bash
-sbt clean -Dbrowser="<browser>" -Denvironment="<environment>" "testOnly uk.gov.hmrc.ui.specs.*" testReport
+sbt clean -Dbrowser="<browser>" -Denvironment="<environment>" test testReport
 ```
 
 ## License
